@@ -1,16 +1,22 @@
 class ModelsController < ApplicationController
+  before_action :set_make, only: [:index]
+
   def index
-    @make = set_make
     @models = Model.where(make_id: @make.id)
     update_models
   end
 
   private
     def update_models
-      @check = UpdateModels.new(@make, params[:webmotors_make_id])
+      @check = UpdateModels.new(@make, set_params)
       @check.update
     end
+
     def set_make
-      @make = Make.where(webmotors_id: params[:webmotors_make_id])[0]
+      @make = Make.where(webmotors_id: set_params)[0]
+    end
+
+    def set_params
+      return params.require(:webmotors_make_id)
     end
 end
