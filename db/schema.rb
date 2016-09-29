@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160226182941) do
 
   create_table "models", force: :cascade do |t|
     t.integer  "make_id"
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
