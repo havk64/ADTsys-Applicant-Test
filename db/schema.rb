@@ -13,12 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20160226182941) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "makes", force: :cascade do |t|
     t.string   "name"
     t.integer  "webmotors_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "makes", ["name"], name: "index_makes_on_name", using: :btree
 
   create_table "models", force: :cascade do |t|
     t.integer  "make_id"
@@ -27,4 +32,7 @@ ActiveRecord::Schema.define(version: 20160226182941) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "models", ["name"], name: "index_models_on_name", using: :btree
+
+  add_foreign_key "models", "makes"
 end
