@@ -11,8 +11,10 @@ class UpdateModels
     rescue Exception => error
       puts "Error connecting to API"
       puts error
+    else
+      # Make db requests/insertions just when new item was added
+      add_to_db(response) if response.size > Model.where(make_id: @make.id).size
     end
-    add_to_db(response) if response.size > Model.where(make_id: @make.id).size
   end
 
   private
