@@ -8,7 +8,7 @@ class ModelsController < ApplicationController
 
   private
     def update_models
-      @check = UpdateModels.new(@make, set_params)
+      @check = UpdateModels.new(set_make, set_params)
       @check.update
     end
 
@@ -17,6 +17,6 @@ class ModelsController < ApplicationController
     end
 
     def set_params
-      return params.require(:webmotors_make_id)
+      params.require(:webmotors_make_id)
     end
 end
