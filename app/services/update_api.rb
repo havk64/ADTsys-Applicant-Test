@@ -1,4 +1,5 @@
 class UpdateAPI
+  include ExceptionLogger
   def api_request(path, data)
     uri = URI('http://www.webmotors.com.br')
     uri.path = path
@@ -16,9 +17,9 @@ class UpdateAPI
   def update
     response = api_request @path, @data
   rescue SocketError => error
-    puts 'Error connecting to API => SocketError', error
+    log error, info: 'Error connecting to API => SocketError'
   rescue => error
-    puts "Error connecting to API => #{error.class}", error
+    log error, info: "Error connecting to API => #{error.class}"
   else
     # Make db requests/insertions just when new item was added
     puts response.size, @size
