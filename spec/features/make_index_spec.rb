@@ -12,18 +12,19 @@ RSpec.feature "Webmotors API" do
   end
 
   scenario "Choosing one random Maker" do
-    # Random integer between 1 and 179 (0 has empty name)
-    rand_make = rand(1..179)
+    # Random integer between 2 and 179 (1 has empty name)
+    rand_id = rand(2..179)
     visit root_path # Visit index page
-    # In selector element we find a random item
-    within '#webmotors_make_id' do
-      find(:xpath, "option[#{rand_make}]").click
-    end
+    # In select element we choose a random item
+    rand_make = find("#webmotors_make_id > option:nth-child(#{rand_id})")
+    rand_make.select_option
     find("[name=commit]").click # click submit
     # Given the size of elements in DB related to this random item...
-    make_size = Make.joins(:models).where(id: rand_make).size
+    make_size = Make.joins(:models).where(name: rand_make.text).size
     list = find('ul').all('li')
     # Is expected to get the same amount of elements displayed on the page.
     expect(list.size).to eq(make_size)
+    # Is expected to have at least one item by Brand
+    expect(list.size).to be > 0
   end
 end
