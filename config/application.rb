@@ -17,10 +17,6 @@ Bundler.require(*Rails.groups)
 
 module AdtsysApplicantTest
   class Application < Rails::Application
-    # Add services directory to auto load path in order to enable and use
-    # "Services Object" that can be used to make controller and model code
-    # cleaner and more readable.
-    config.autoload_paths << "#{Rails.root}/services"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
