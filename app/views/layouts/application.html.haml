@@ -7,4 +7,14 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = yield
+    .container
+      %nav.navbar.navbar-default
+        .container-fluid
+          .navbar-header
+            %button{ type: 'button', class: 'navbar-toggle collapsed', data_toggle: 'collapse' }
+            %a{ class: 'nav-brand', href: root_path, title: 'home' }
+              = image_tag 'logo-adtsys.jpg', alt: 'ADTSys logo' #ADTsys Applicant Test
+            %p.navbar-text.navbar-right Application Test
+
+      .main
+        = yield
