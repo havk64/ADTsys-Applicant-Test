@@ -22,7 +22,6 @@ class UpdateAPI
     log error, info: "Error connecting to API => #{error.class}"
   else
     # Make db requests/insertions just when new item was added
-    puts response.size, @size
     add_to_db(response) if response.uniq.size > @size
   end
 end
