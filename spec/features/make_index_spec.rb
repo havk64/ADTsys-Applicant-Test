@@ -1,4 +1,6 @@
-RSpec.feature "Webmotors API" do
+feature "Webmotors API" do
+  # Allow connections on Net::HTTP.start that are disabled by WebMock
+  WebMock.allow_net_connect!(net_http_connect_on_start: true)
   scenario "Visiting the index page first time" do
     # Ensure database is clean before first page access
     before_count = Make.all.size
