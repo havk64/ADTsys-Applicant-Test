@@ -8,11 +8,9 @@ threads threads_count, threads_count
 port        ENV.fetch("PORT") { 3000 }
 environment ENV.fetch("RAILS_ENV") { "development" }
 
-bind "unix://#{app_dir}/tmp/sockets/puma.sock"
+bind "unix:#{app_dir}/tmp/sockets/puma.sock"
 pidfile "#{app_dir}/tmp/pids/puma.pid"
 state_path "#{app_dir}/tmp/pids/puma.state"
-
-preload_app!
 
 on_worker_boot do
   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
