@@ -13,6 +13,6 @@ test: &test
 
 production:
   <<: *default
-  database: adtsys_applicant_production
-  username: adtsys_applicant
+  database: adtsys_applicant
+  username: vagrant
   password: <%= ENV['ADTSYS_APPLICANT_DATABASE_PASSWORD'] %>
