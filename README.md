@@ -1,6 +1,8 @@
-# ADTsys applicant test
+# Webmotors API - Example
 
 ## Description  
+Example of use of external API using Ruby on Rails where the data is synced and
+persisted locally but not dependent on the original API.  
 The logic needed to update and persist the Webmotors API information has being
 moved to a
 ***[Service Object](https://www.netguru.co/blog/service-objects-in-rails-will-help)***
@@ -30,7 +32,7 @@ The virtual machine to be built is based on Ubuntu 14.04 LTS, brings a Ruby on R
 
 Clone the specified repo and follow the instructions on its README file:
 
-        $ git clone git@github.com:havk64/ADTsys-ansible-deploy.git
+        $ git clone git@github.com:havk64/Webmotors-API-test.git
 
 
 ---------------
